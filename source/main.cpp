@@ -3,27 +3,26 @@
 
 #define Red 1
 #define Black 0
-#define Empty_Red 1
-#define Empty_Black 0
 
 struct rbtree{
     struct rbtree *parent;
     struct rbtree *left;
     struct rbtree *right;
     int value;
-    char color; // 0 - black; 1 - red (0 bit);; 0 - is empty; 1 - '0' is value (2 bit);;
+    char color;
 } typedef Tree;
 
 int is_red ( Tree *node )
 {
-    return node != NULL && node->color & 1;
+    return node != NULL && ((root->parent == NULL) && (root->left == NULL) && (root->right == NULL) && (root->color == Red));
 }
 
 /* функция для однократного поворота узла */
 Tree *rb_single ( Tree *root, int dir )
 {
     Tree *save;
-    if (!dir) {
+    if (!dir) 
+    {
         save = root->right;
         root->right = save->left;
         save->left = root;
@@ -406,7 +405,7 @@ int main()
                 break;
         }
     }
-    while ( 1 );
+    while (true);
 
     return 0;
 }
